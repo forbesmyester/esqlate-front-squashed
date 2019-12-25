@@ -1,0 +1,58 @@
+{
+  "name": "esqlate-front",
+  "version": "1.0.2",
+  "description": "SQL based functional CRUD",
+  "dependencies": {
+    "debounce": "^1.2.0",
+    "director": "^1.2.8",
+    "esqlate-cache": "^1.0.1",
+    "esqlate-lib": "^1.0.8",
+    "esqlate-waitfor": "^1.0.1",
+    "markdown-it": "^10.0.0",
+    "sirv-cli": "^0.4.5",
+    "spectre.css": "^0.5.8",
+    "tape": "^4.11.0",
+    "ts-node": "^8.5.2",
+    "typescript": "^3.7.2"
+  },
+  "devDependencies": {
+    "@types/tape": "^4.2.33",
+    "node-sass": "^4.13.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.27.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-livereload": "^1.0.4",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-svelte": "^5.1.1",
+    "rollup-plugin-terser": "^4.0.4",
+    "svelte": "^3.15.0"
+  },
+  "scripts": {
+    "build-third-party": "mkdir -p public/node_modules && tar -C node_modules -c director/build/director.js markdown-it/dist/markdown-it.min.js | tar -C public/node_modules/ -x",
+    "test": "set -e; for FILE in ts-test/*; do ./node_modules/.bin/ts-node \"$FILE\"; done",
+    "build-ts": "./node_modules/.bin/tsc && cp -R ts-build/ts-src/* src/",
+    "build": "npm run-script build-templates && npm run-script build-scss && npm run-script build-ts && npm run-script build-third-party && ./node_modules/.bin/rollup -c",
+    "build-rollup": "./node_modules/.bin/rollup -c",
+    "autobuild": "./node_modules/.bin/rollup -c -w",
+    "build-templates": "cat src/index.tpl.html | envsubst > public/index.html",
+    "build-scss": "./node_modules/.bin/node-sass src/index.scss > public/index.css",
+    "dev": "./node_modules/.bin/run-p start:dev autobuild",
+    "start": "lighttpd -D -f ./lighttpd.conf",
+    "build-lighttpd": "cat ./lighttpd.tpl.conf | envsubst > lighttpd.conf",
+    "start:dev": "./node_modules/.bin/sirv public --single --dev --port $LISTEN_PORT"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forbesmyester/esqlate-front.git"
+  },
+  "keywords": [
+    "crud",
+    "postgresql"
+  ],
+  "author": "Matt Forrester <github@speechmarks.com>",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/forbesmyester/esqlate/issues"
+  },
+  "homepage": "https://github.com/forbesmyester/esqlate#readme"
+}

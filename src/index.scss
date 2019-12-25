@@ -1,0 +1,158 @@
+@import "variables";
+@import "node_modules/spectre.css/src/mixins";
+
+/*! Spectre.css v#{$version} | MIT License | github.com/picturepan2/spectre */
+// Reset and dependencies
+@import "node_modules/spectre.css/src/normalize";
+@import "node_modules/spectre.css/src/base";
+
+// Elements
+@import "node_modules/spectre.css/src/typography";
+@import "node_modules/spectre.css/src/asian";
+@import "node_modules/spectre.css/src/tables";
+@import "node_modules/spectre.css/src/buttons";
+@import "node_modules/spectre.css/src/forms";
+@import "node_modules/spectre.css/src/labels";
+@import "node_modules/spectre.css/src/codes";
+@import "node_modules/spectre.css/src/media";
+
+// Layout
+@import "node_modules/spectre.css/src/layout";
+@import "node_modules/spectre.css/src/hero";
+@import "node_modules/spectre.css/src/navbar";
+
+// Components
+@import "node_modules/spectre.css/src/accordions";
+@import "node_modules/spectre.css/src/avatars";
+@import "node_modules/spectre.css/src/badges";
+@import "node_modules/spectre.css/src/breadcrumbs";
+@import "node_modules/spectre.css/src/bars";
+@import "node_modules/spectre.css/src/cards";
+@import "node_modules/spectre.css/src/chips";
+@import "node_modules/spectre.css/src/dropdowns";
+@import "node_modules/spectre.css/src/empty";
+@import "node_modules/spectre.css/src/menus";
+@import "node_modules/spectre.css/src/modals";
+@import "node_modules/spectre.css/src/navs";
+@import "node_modules/spectre.css/src/pagination";
+@import "node_modules/spectre.css/src/panels";
+@import "node_modules/spectre.css/src/popovers";
+@import "node_modules/spectre.css/src/steps";
+@import "node_modules/spectre.css/src/tabs";
+@import "node_modules/spectre.css/src/tiles";
+@import "node_modules/spectre.css/src/toasts";
+@import "node_modules/spectre.css/src/tooltips";
+
+// Utility classes
+@import "node_modules/spectre.css/src/animations";
+@import "node_modules/spectre.css/src/utilities";
+
+// Left Menu
+@import "node_modules/spectre.css/src/off-canvas";
+
+
+/* == Make SQL box appear in centre with content controlled width =========== */
+
+
+
+.code-popup {
+    max-width: none;
+    max-height: none;
+    width: unset;
+
+    div.code-code .line {
+        margin-bottom: 0.5rem;
+        &:last-of-type { margin-bottom: 0.5rem; }
+        span { white-space: pre; font-family: monospace; }
+    }
+
+}
+
+.no-modal .code-popup, .code-popup div.code {
+    background-color: #f7f8f9;
+}
+
+.no-modal .code-popup {
+    box-shadow:none;
+    border: 1px solid #dadee4;
+}
+
+/* == Misc ================================================================== */
+a {
+    font-weight: bold;
+    text-decoration: underline;
+}
+input[type="number"] { width: 6rem; }
+.no-modal .modal-overlay { display: none; font-size: 0px; }
+.modal-overlay { background: $bg-color !important; color: $bg-color !important; }
+.modal-container { padding: $unit-4; }
+div.in-popup div#main_links {
+    margin: 0 auto 1.2rem 0;
+}
+div#main_links {
+    margin: 1rem 0;
+    text-align: center;
+    a {
+        padding: 0 0.5rem;
+        border-right: 1px dashed black;
+        &:last-child { border-right: none; }
+    }
+}
+.input-popup {
+    text-align: right;
+    min-width: 8rem;
+    div { float: left }
+}
+#showing-menu {
+    width: 35%;
+    margin: auto;
+    #menu {
+        margin-top: 3em;
+        list-style: none;
+        li a {
+            margin: 1rem;
+            color: #3b4351;
+        }
+    }
+}
+#logo {
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    padding: 2rem;
+}
+#sidebar-id {
+    ul, #logo {
+        margin: 2rem;
+        list-style: none;
+    }
+    li a {
+        margin: 1rem;
+        color: #3b4351;
+    }
+}
+input, select, .input-popup {
+    &.is-error { border-color: $error-color; }
+}
+.toast-resultset-warning {
+    margin: 3em 0;
+}
+#loading-modal.modal.active {
+    background-color: white;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+    &.loading-notification {
+        opacity: 0.8;
+    }
+    div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 288pt
+    }
+}
+.showing-menu.off-canvas .off-canvas-overlay {
+    background: rgba(56, 56, 56, 0.03)
+}
